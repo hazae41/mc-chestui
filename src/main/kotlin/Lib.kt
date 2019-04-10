@@ -1,3 +1,5 @@
+@file:JvmName("ChestUI")
+
 package hazae41.minecraft.chestui
 
 import hazae41.minecraft.chestui.Direction.*
