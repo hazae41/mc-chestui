@@ -5,7 +5,7 @@
 
 ##### [Go to Spigot](https://www.spigotmc.org/resources/chestui-powerful-gui-builder.61895/)
 
-##### [Go to JitPack](https://jitpack.io/#hazae41/mc-chestui)
+##### [Go to JitPack](https://jitpack.io/#hazae41/mc-chestui/master-SNAPSHOT)
 
 ##### [Plugins using ChestUI](https://github.com/topics/chestui)
 
