@@ -1,0 +1,7 @@
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation "com.github.hazae41:mc-kotlin:master-SNAPSHOT"
+}

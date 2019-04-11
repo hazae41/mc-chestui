@@ -6,6 +6,7 @@ group 'hazae41'
 version '2.0'
 
 apply from: 'spigot.gradle'
+apply from: 'mckotlin.gradle'
 
 repositories {
     mavenCentral()
@@ -13,14 +14,6 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-}
-
-repositories {
-    maven { url 'https://jitpack.io' }
-}
-
-dependencies {
-    implementation "com.github.Hazae41:Kotlin4MC:-SNAPSHOT"
 }
 
 compileKotlin {
