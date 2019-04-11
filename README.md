@@ -9,6 +9,36 @@
 
 ##### [Plugins using ChestUI](https://github.com/topics/chestui)
 
+# Getting started
+
+To avoid classpath conflict, you need to use package relocation
+
+Add the following **at the top** of your **build.gradle**
+
+    plugins {
+        id 'com.github.johnrengelman.shadow' version '4.0.2'
+    }
+
+    import com.github.jengelman.gradle.plugins.shadow.tasks.ConfigureShadowRelocation
+    task relocateShadowJar(type: ConfigureShadowRelocation) {
+        target = tasks.shadowJar
+        prefix = rootProject.name
+    }
+    
+    tasks.shadowJar {
+        classifier = 'bundle'
+        dependsOn tasks.relocateShadowJar
+    }
+
+    artifacts {
+        archives shadowJar
+    }
+    
+Then use the shadowJar task to build your jar
+
+
+# Documentation
+
 ### Simple menu
 
 ##### Kotlin
