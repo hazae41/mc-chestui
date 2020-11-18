@@ -1,0 +1,16 @@
+name: ChestUI
+description: ChestUI
+version: 2.0
+author: hazae41
+main: hazae41.chestui.Main
+api-version: 1.16
+depend: [ Kotlin ]
+
+commands:
+  chestui:
+    permission: chestui.op
+    description: ChestUI
+
+permissions:
+  'chestui.op':
+    default: op
