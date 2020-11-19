@@ -232,7 +232,7 @@ fun MyGUI(): GUI {
   val redButton = RedButton()  
 
   return gui("Test", 6) {
-    redButton()
+    redButton("You clicked!")
   }
 }
 
@@ -244,8 +244,9 @@ fun RedButton(): GUI.(String) -> Unit {
   ) {
     slot(0, 0){
       item = item(Material.RED_CONCRETE)
-      onclick = {
+      onclick = { p ->
         clicked = true
+        p.sendMessage(message)
         refresh()
       }
     }
