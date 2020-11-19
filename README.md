@@ -4,7 +4,7 @@
 
 > React-like chest GUI rendering for Bukkit
 
-### [Download](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-2.0.jar)
+### [Download](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-3.0.jar)
 
 ##### [Plugins using ChestUI](https://github.com/topics/chestui)
 
