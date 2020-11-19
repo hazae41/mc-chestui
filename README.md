@@ -117,7 +117,7 @@ fun MyGUI(): GUI {
   val cakeName = "I'm a cake"
   
   return gui("Test", 6) {
-    slot(cakePos) {
+    slot(0, 0) {
       item = item(Material.CAKE) {
         name = cakeName
       }
