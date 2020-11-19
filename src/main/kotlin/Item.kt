@@ -6,7 +6,7 @@ import org.bukkit.inventory.meta.ItemMeta
 
 fun item(
   type: Material = Material.BLACK_CONCRETE,
-  builder: Item.() -> Unit
+  builder: Item.() -> Unit = {}
 ) = Item(type).apply(builder)
 
 class Item(
@@ -32,5 +32,11 @@ class Item(
     get() = meta?.lore
     set(value) {
       meta { lore = value }
+    }
+
+  var amount
+    get() = stack.amount
+    set(value) {
+      stack.amount = value
     }
 }

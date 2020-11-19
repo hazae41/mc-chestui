@@ -23,7 +23,7 @@ fun JavaPlugin.gui(
 
 fun Player.open(gui: GUI) = openInventory(gui.inventory)
 
-class GUI(
+open class GUI(
   val plugin: JavaPlugin,
   val title: String,
   val rows: Int,
@@ -91,7 +91,7 @@ class GUI(
     builder: GUI.Slot.() -> Unit
   ) = fill(coords1.x, coords1.y, coords2.x, coords2.y, builder)
 
-  fun all(builder: GUI.Slot.() -> Unit) = fill(1, 1, 9, rows, builder)
+  fun all(builder: GUI.Slot.() -> Unit) = fill(0, 0, 8, rows - 1, builder)
 
   fun Coords.up() {
     y = Math.floorMod((y - 1), rows)
