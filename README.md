@@ -13,6 +13,7 @@
 ### Features
 
 - Kotlin DSL
+- Click events
 - Variables
 - Conditional rendering
 - Components with props
