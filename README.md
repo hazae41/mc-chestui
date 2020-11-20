@@ -116,7 +116,7 @@ They can be modified and read *inside* the render function
 
 ```kotlin
 fun MyGUI(): GUI {
-  val cakeName = "I'm a cake"
+  var cakeName = "I'm a cake"
   
   return gui("Test", 6) {
     slot(0, 0) {
