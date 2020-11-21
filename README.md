@@ -4,9 +4,11 @@
 
 > React-like chest GUI rendering for Bukkit
 
-### [Download ChestUI](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-3.0.jar)
+### Installation
 
-### [Download Kotlin](https://github.com/hazae41/mc-chestui/raw/master/build/libs/Kotlin-1.4.10.jar)
+#### [Download ChestUI](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-3.0.jar)
+
+#### [Download Kotlin](https://github.com/hazae41/mc-chestui/raw/master/build/libs/Kotlin-1.4.10.jar)
 
 ##### [Plugins using ChestUI](https://github.com/topics/chestui)
 
