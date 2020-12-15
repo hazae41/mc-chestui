@@ -3,9 +3,11 @@ package hazae41.chestui
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority.LOWEST
+import org.bukkit.event.EventPriority.MONITOR
+import org.bukkit.event.HandlerList
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.event.inventory.InventoryCloseEvent
 
 data class Coords(
   var x: Int,
@@ -15,28 +17,23 @@ data class Coords(
 fun toSlot(x: Int, y: Int) = x + (y * 9)
 fun fromSlot(s: Int) = Pair(s % 9, s / 9)
 
-fun JavaPlugin.gui(
-  title: String,
-  rows: Int,
-  render: GUI.() -> Unit
-) = GUI(this, title, rows, render).apply(render)
-
 fun Player.open(gui: GUI) = openInventory(gui.inventory)
 
-open class GUI(
-  val plugin: JavaPlugin,
+class GUI(
   val title: String,
   val rows: Int,
   val render: GUI.() -> Unit
 ) : Listener {
+  init {
+    plugin.server.pluginManager
+      .registerEvents(this, plugin)
+    render()
+  }
+
   val slots = arrayOfNulls<Slot>(9 * rows)
 
   val inventory = plugin.server
     .createInventory(null, rows * 9, title)
-
-  init {
-    plugin.server.pluginManager.registerEvents(this, plugin)
-  }
 
   fun refresh() {
     inventory.clear()
@@ -47,7 +44,7 @@ open class GUI(
 
   @EventHandler(priority = LOWEST)
   fun onclick(e: InventoryClickEvent) {
-    if (e.clickedInventory != inventory) return
+    if (e.inventory != inventory) return
     e.isCancelled = true
 
     val player = e.whoClicked as? Player ?: return
@@ -56,20 +53,31 @@ open class GUI(
     slot.onclick(e, player)
   }
 
+  @EventHandler(priority = MONITOR)
+  fun onclose(e: InventoryCloseEvent) {
+    if (e.inventory != inventory) return
+    if (inventory.viewers.size > 0) return
+    HandlerList.unregisterAll(this)
+  }
+
   inner class Slot() {
     var item: Item? = null
     var onclick: InventoryClickEvent.(Player) -> Unit = {}
   }
 
   fun slot(
-    x: Int, y: Int,
+    i: Int,
     builder: GUI.Slot.() -> Unit
   ) {
-    val i = toSlot(x, y)
     val slot = Slot().apply(builder)
     inventory.setItem(i, slot.item?.stack)
     slots[i] = slot
   }
+
+  fun slot(
+    x: Int, y: Int,
+    builder: GUI.Slot.() -> Unit
+  ) = slot(toSlot(x, y), builder)
 
   fun slot(
     coords: Coords,

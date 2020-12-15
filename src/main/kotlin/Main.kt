@@ -8,10 +8,13 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.plugin.java.JavaPlugin
 
+lateinit var plugin: Main
+
 class Main : JavaPlugin(), Listener {
 
   override fun onEnable() {
     super.onEnable()
+    plugin = this
 
     server.pluginManager.registerEvents(this, this)
 
@@ -34,7 +37,7 @@ class Main : JavaPlugin(), Listener {
     val redButton = RedButton()
 
     // Render function
-    return gui("Cake", 6) {
+    return GUI("Cake", 6) {
       fill(1, 1, 2, 2) {
         item = item(ANVIL) { name = "Background" }
       }
