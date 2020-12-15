@@ -17,6 +17,12 @@ data class Coords(
 fun toSlot(x: Int, y: Int) = x + (y * 9)
 fun fromSlot(s: Int) = Pair(s % 9, s / 9)
 
+fun gui(
+  title: String,
+  rows: Int,
+  render: GUI.() -> Unit
+) = GUI(title, rows, render).apply(render)
+
 fun Player.open(gui: GUI) = openInventory(gui.inventory)
 
 class GUI(
@@ -27,7 +33,6 @@ class GUI(
   init {
     plugin.server.pluginManager
       .registerEvents(this, plugin)
-    render()
   }
 
   val slots = arrayOfNulls<Slot>(9 * rows)
