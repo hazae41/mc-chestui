@@ -52,6 +52,7 @@ class GUI(
     if (e.inventory != inventory) return
     e.isCancelled = true
 
+    if (e.clickedInventory != inventory) return
     val player = e.whoClicked as? Player ?: return
     val slot = slots.getOrNull(e.slot) ?: return
 
