@@ -6,7 +6,7 @@
 
 ### Installation
 
-#### [Download ChestUI](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-3.0.jar)
+#### [Download ChestUI](https://github.com/hazae41/mc-chestui/raw/master/build/libs/chestui-3.1.jar)
 
 #### [Download Kotlin](https://github.com/hazae41/mc-chestui/raw/master/build/libs/Kotlin-1.4.10.jar)
 
