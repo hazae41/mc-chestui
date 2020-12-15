@@ -4,7 +4,7 @@ version: 3.1
 author: hazae41
 main: hazae41.chestui.Main
 api-version: 1.16
-depend: [ Kotlin ]
+softdepend: [ Kotlin ]
 
 commands:
   chestui:
