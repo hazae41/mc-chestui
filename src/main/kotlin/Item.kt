@@ -3,6 +3,7 @@ package hazae41.chestui
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
+import org.bukkit.inventory.meta.SkullMeta
 
 fun item(
   type: Material = Material.BLACK_CONCRETE,
@@ -38,5 +39,13 @@ class Item(
     get() = stack.amount
     set(value) {
       stack.amount = value
+    }
+
+  var skullOwner
+    get() = (meta as SkullMeta).owningPlayer
+    set(value) {
+      meta {
+        (this as SkullMeta).owningPlayer = value
+      }
     }
 }
